@@ -2,6 +2,7 @@ import {
 	AbsoluteFill,
 	Freeze,
 	interpolate,
+	OffthreadVideo,
 	random,
 	Sequence,
 	spring,
@@ -90,7 +91,7 @@ export const Memory: React.FC<{
 					/>
 				) : frame < item.startFrom ? (
 					<Freeze frame={0}>
-						<Video
+						<OffthreadVideo
 							muted
 							src={item.src}
 							style={{
@@ -100,7 +101,7 @@ export const Memory: React.FC<{
 					</Freeze>
 				) : (
 					<Sequence from={item.startFrom} layout="none">
-						<Video
+						<OffthreadVideo
 							muted
 							src={item.src}
 							style={{
