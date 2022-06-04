@@ -24,11 +24,20 @@ export const Memory: React.FC<{
 		[0, 1],
 		[-0.05, 0.05]
 	);
+
 	const direction = interpolate(
 		random(item.src + item.src),
 		[0, 1],
 		[0, Math.PI * 2]
 	);
+
+	const initial = spring({
+		fps,
+		frame,
+		config: {
+			damping: 200,
+		},
+	});
 
 	const enter = spring({
 		fps,
@@ -67,7 +76,7 @@ export const Memory: React.FC<{
 				justifyContent: 'center',
 				alignItems: 'center',
 				transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${
-					interpolate(enter, [0, 1], [0.7, 1]) * constant
+					interpolate(enter, [0, 1], [0.7, 1]) * constant * initial
 				})`,
 			}}
 		>
